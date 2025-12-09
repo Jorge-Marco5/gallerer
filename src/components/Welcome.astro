@@ -1,0 +1,43 @@
+---
+import astroLogo from "../assets/astro.svg";
+import background from "../assets/background.svg";
+---
+
+<div class="relative w-screen h-screen grid min-h-screen">
+  <img
+    id="background"
+    src={background.src}
+    alt=""
+    class="absolute w-screen h-screen object-cover blur-sm"
+  />
+  <main class="relative grid place-items-center px-8 py-16 md:py-20 lg:py-24">
+    <section id="hero" class="max-w-3xl space-y-4 text-center">
+      <div class="flex items-center justify-center">
+        <img src="Gallerer.svg" alt="Gallerer" class="h-24" loading="eager" />
+        <h1 class="text-5xl font-bold text-black sm:text-6xl md:text-7xl">
+          Gallerer
+        </h1>
+      </div>
+      <h1 class="text-2xl text-black sm:text-3xl md:text-4xl">
+        A simple image gallery
+      </h1>
+      <section
+        id="links"
+        class="mt-8 flex flex-col justify-center gap-4 sm:flex-row"
+      >
+        <a
+          href="/about"
+          class="inline-flex items-center justify-center rounded-md border border-transparent bg-indigo-600 px-6 py-3 text-base font-medium text-white hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2"
+          >About</a
+        >
+        <a
+          href="https://astro.build"
+          class="inline-flex items-center justify-center rounded-md border border-gray-300 bg-white px-4 py-2 hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2"
+        >
+          <p class="text-black text-sm font-medium mr-2">Made with</p>
+          <img src={astroLogo.src} alt="Astro Logo" class="h-8" />
+        </a>
+      </section>
+    </section>
+  </main>
+</div>

@@ -1,0 +1,55 @@
+---
+import Layout from "../layouts/Layout.astro";
+import { Footer } from "../components/footer";
+---
+
+<div class="flex flex-col h-full min-h-screen">
+  <Layout title="Terms of Service" client:load>
+    <main class="container mx-auto px-4 py-8 max-w-3xl h-full min-h-screen">
+      <h1
+        class="text-2xl font-extrabold text-center mb-10 text-gray-900 dark:text-white"
+      >
+        Terms of Service
+      </h1>
+
+      <p class="mb-4 text-lg leading-relaxed text-gray-700 dark:text-gray-300">
+        By accessing and using Gallerer, you agree to comply with these Terms of
+        Service.
+      </p>
+
+      <p class="mb-4 text-lg leading-relaxed text-gray-700 dark:text-gray-300">
+        Gallerer is a simple image gallery built with Astro. It does not collect
+        any personal information from its users.
+      </p>
+
+      <p class="mb-4 text-lg leading-relaxed text-gray-700 dark:text-gray-300">
+        Gallerer does not use cookies or other tracking technologies.
+      </p>
+
+      <p class="mb-4 text-lg leading-relaxed text-gray-700 dark:text-gray-300">
+        Gallerer does not sell or share any personal information with third
+        parties.
+      </p>
+
+      <p class="mb-4 text-lg leading-relaxed text-gray-700 dark:text-gray-300">
+        Gallerer is committed to protecting the privacy of its users and
+        complying with relevant data protection regulations.
+      </p>
+
+      <p class="mb-4 text-lg leading-relaxed text-gray-700 dark:text-gray-300">
+        If you have any questions or concerns about this Terms of Service,
+        please contact us at <a
+          href="mailto:jorgemarcos.andsof@gmail.com"
+          class="text-blue-600 hover:underline dark:text-blue-400"
+          >jorgemarcos.andsof@gmail.com</a
+        >.
+      </p>
+
+      <p class="text-sm text-gray-500 dark:text-gray-400 mt-8">
+        Last updated: December 9, 2025
+      </p>
+    </main>
+  </Layout>
+
+  <Footer client:load />
+</div>
