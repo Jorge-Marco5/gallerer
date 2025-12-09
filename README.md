@@ -1,6 +1,6 @@
 # Gallerer
 
-![Gallerer](assets/gallerer.png)
+![Gallerer](assets/Gallerer.png)
 
 Galería de imágenes web estática hecha en Astro usando react y los componentes de motion-primitives.
 
