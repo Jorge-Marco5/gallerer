@@ -23,25 +23,15 @@ jobs:
           npm install
           npm run build
 
-      # Configurar la llave SSH en el entorno
+      # Configurar la llave SSH
       - name: Configure SSH
         uses: webfactory/ssh-agent@v0.9.0
         with:
           ssh-private-key: ${{ secrets.SSH_KEY }}
 
-      # IMPORTANTE: Agregar la IP del servidor a los hosts conocidos
-      # Sin esto, el deploy fallará preguntando "¿Estás seguro de conectarte?"
-      - name: Add host key
-        run: |
-          mkdir -p ~/.ssh
-          ssh-keyscan -H ${{ secrets.SSH_HOST }} >> ~/.ssh/known_hosts
-
-      # Copiar archivos usando SCP (Compatible con Windows)
-      # Nota la sintaxis de la ruta Windows: 'C:/ruta/...'
+      # Copiar archivos usando SCP a través de Ngrok
+      # -P: Usa el puerto definido en tus secretos (ej. 12633)
+      # -o StrictHostKeyChecking=no: Evita el error de confirmación de host
       - name: Deploy to Windows Nginx
         run: |
-          # Borrar contenido anterior (Opcional, usando comando PowerShell vía SSH)
-          # ssh ${{ secrets.SSH_USER }}@${{ secrets.SSH_HOST }} "powershell -command Remove-Item 'C:\nginx\html\my-astro-site\*' -Recurse -Force"
-
-          # Copiar el contenido de la carpeta dist
-          scp -r dist/* ${{ secrets.SSH_USER }}@${{ secrets.SSH_HOST }}:'C:/nginx/html'
+          scp -P ${{ secrets.SSH_PORT }} -o StrictHostKeyChecking=no -r dist/* ${{ secrets.SSH_USER }}@${{ secrets.SSH_HOST }}:'C:/nginx/html'
