@@ -34,4 +34,4 @@ jobs:
       # -o StrictHostKeyChecking=no: Evita el error de confirmación de host
       - name: Deploy to Windows Nginx
         run: |
-          scp -P ${{ secrets.SSH_PORT }} -o StrictHostKeyChecking=no -r dist/* ${{ secrets.SSH_USER }}@${{ secrets.SSH_HOST }}:'C:/nginx/html'
+          scp -P ${{ secrets.SSH_PORT }} -o StrictHostKeyChecking=no -r dist/* ${{ secrets.SSH_USER }}@${{ secrets.SSH_HOST }}:'/C:/nginx/html'
