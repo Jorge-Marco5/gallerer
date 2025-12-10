@@ -1,0 +1,47 @@
+name: Deploy Astro a Nginx (Windows)
+
+on:
+  push:
+    branches:
+      - main
+
+jobs:
+  build-and-deploy:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v3
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v3
+        with:
+          node-version: "20"
+
+      - name: Install dependencies and build
+        run: |
+          npm install
+          npm run build
+
+      # Configurar la llave SSH en el entorno
+      - name: Configure SSH
+        uses: webfactory/ssh-agent@v0.8.1
+        with:
+          ssh-private-key: ${{ secrets.SSH_KEY }}
+
+      # IMPORTANTE: Agregar la IP del servidor a los hosts conocidos
+      # Sin esto, el deploy fallará preguntando "¿Estás seguro de conectarte?"
+      - name: Add host key
+        run: |
+          mkdir -p ~/.ssh
+          ssh-keyscan -H ${{ secrets.SSH_HOST }} >> ~/.ssh/known_hosts
+
+      # Copiar archivos usando SCP (Compatible con Windows)
+      # Nota la sintaxis de la ruta Windows: 'C:/ruta/...'
+      - name: Deploy to Windows Nginx
+        run: |
+          # Borrar contenido anterior (Opcional, usando comando PowerShell vía SSH)
+          # ssh ${{ secrets.SSH_USER }}@${{ secrets.SSH_HOST }} "powershell -command Remove-Item 'C:\nginx\html\my-astro-site\*' -Recurse -Force"
+
+          # Copiar el contenido de la carpeta dist
+          scp -r dist/* ${{ secrets.SSH_USER }}@${{ secrets.SSH_HOST }}:'C:/nginx/html'
