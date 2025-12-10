@@ -28,7 +28,7 @@ export function Footer() {
               />
               GitHub:{" "}
               <a
-                href="https://github.com/jorgemarcos/gallerer"
+                href="https://github.com/Jorge-Marco5/gallerer"
                 target="_blank"
                 rel="noopener noreferrer"
                 className="hover:text-gray-300 transition-colors duration-200"
