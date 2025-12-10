@@ -4,61 +4,63 @@ import { Footer } from "../components/footer";
 ---
 
 <Layout title="Privacy Policy" client:load>
-  <div class="flex flex-col min-h-screen">
+  <div class="flex flex-col min-h-screen text-neutral-900 dark:text-white p-12">
     <main class="container mx-auto px-6 py-12 max-w-3xl">
-      <h2 class="text-2xl font-extrabold text-center mb-10 text-neutral-900">
-        Privacy Policy
-      </h2>
+      <h2 class="text-2xl font-extrabold text-center mb-10">Privacy Policy</h2>
 
-      <p class="mb-4 text-neutral-700">
+      <p class="mb-4">
         This Privacy Policy outlines the practices of Gallerer.
       </p>
 
-      <p class="mb-4 text-neutral-700">
-        Gallerer does not collect any personal information from its users.
-      </p>
+      <p class="mb-4">Gallerer does not collect any personal information.</p>
 
-      <p class="mb-4 text-neutral-700">
+      <p class="mb-4">
         Gallerer does not use cookies or other tracking technologies.
       </p>
 
-      <p class="mb-4 text-neutral-700">
+      <p class="mb-4">
         Gallerer does not sell or share any personal information with third
         parties.
       </p>
 
-      <p class="mb-4 text-neutral-700">
+      <p class="mb-4">
         Gallerer is committed to protecting the privacy of its users and
         complying with relevant data protection regulations.
       </p>
 
-      <p class="mb-4 text-neutral-700">
+      <p class="mb-4">
         Gallerer does not own the copyrights to the images displayed in the
         gallery. Each of the images has its respective authors and comes from
-        the platform
-        <a
+        the platform<a
           href="https://cosmos.so"
           class="text-blue-600 hover:underline hover:text-blue-800 transition-colors duration-200"
           >cosmos.so</a
-        >
-        and is shown for educational and demonstration purposes only.
+        > and is shown for educational and demonstration purposes only.
       </p>
-
-      <p class="mb-4 text-neutral-700">
-        If you have any questions or concerns about this Privacy Policy, please
-        contact us at
-        <a
-          href="mailto:jorgemarcos.andsof@gmail.com"
-          class="text-blue-600 hover:underline hover:text-blue-800 transition-colors duration-200"
-          >jorgemarcos.andsof@gmail.com</a
-        >.
-      </p>
-
-      <p class="text-sm text-neutral-500 mt-8">
-        Last updated: December 9, 2025
-      </p>
+      Gallerer does not own the copyrights to the images displayed in the gallery.
+      Each of the images has its respective authors and comes from the platform
+      <a
+        href="https://cosmos.so"
+        class="text-blue-600 hover:underline hover:text-blue-800 transition-colors duration-200"
+        >cosmos.so</a
+      >
+      and is shown for educational and demonstration purposes only.
     </main>
 
-    <Footer client:load />
+    <p class="mb-4 text-neutral-700 dark:text-neutral-200">
+      If you have any questions or concerns about this Privacy Policy, please
+      contact us at
+      <a
+        href="mailto:jorgemarcos.andsof@gmail.com"
+        class="text-blue-600 hover:underline hover:text-blue-800 transition-colors duration-200"
+        >jorgemarcos.andsof@gmail.com</a
+      >.
+    </p>
+
+    <p class="text-sm text-neutral-500 mt-8 dark:text-neutral-400">
+      Last updated: December 9, 2025
+    </p>
   </div>
+
+  <Footer client:load />
 </Layout>

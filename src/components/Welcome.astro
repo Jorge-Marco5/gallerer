@@ -1,34 +1,87 @@
 ---
-import astroLogo from "../assets/astro.svg";
-import background from "../assets/background.svg";
+import backgroundDark from "../assets/background.jpg";
+import backgroundLight from "../assets/backgroundLight.jpg";
 ---
 
 <div class="relative w-screen h-screen grid min-h-screen">
   <img
     id="background"
-    src={background.src}
+    data-dark-src={backgroundDark.src}
+    data-light-src={backgroundLight.src}
     alt=""
-    class="absolute w-screen h-screen object-cover blur-sm"
+    class="fixed top-0 w-screen h-screen object-cover transition-opacity duration-500 ease-in-out"
   />
+  <script is:inline>
+    const img = document.getElementById("background");
+    let currentTheme =
+      document.documentElement.getAttribute("data-theme") || "light";
+
+    const updateBackground = () => {
+      const newTheme =
+        document.documentElement.getAttribute("data-theme") || "light";
+      const newSrc =
+        newTheme === "dark" ? img.dataset.darkSrc : img.dataset.lightSrc;
+      const newBlurClass = newTheme === "dark" ? "blur-[1px]" : "";
+
+      if (img.src !== newSrc) {
+        img.style.opacity = "0";
+
+        const handleLoad = () => {
+          img.style.opacity = "1";
+          if (newBlurClass) {
+            img.classList.add("blur-[1px]");
+          } else {
+            img.classList.remove("blur-[1px]");
+          }
+          img.removeEventListener("load", handleLoad);
+        };
+
+        setTimeout(() => {
+          img.src = newSrc;
+          img.addEventListener("load", handleLoad);
+          if (img.complete) {
+            handleLoad();
+          }
+        }, 0);
+      } else {
+        if (newBlurClass) {
+          img.classList.add("blur-[1px]");
+        } else {
+          img.classList.remove("blur-[1px]");
+        }
+      }
+      currentTheme = newTheme;
+    };
+
+    updateBackground();
+
+    const observer = new MutationObserver(updateBackground);
+    observer.observe(document.documentElement, {
+      attributes: true,
+      attributeFilter: ["data-theme"],
+    });
+  </script>
   <main class="relative grid place-items-center px-8 py-16 md:py-20 lg:py-24">
     <section id="hero" class="max-w-3xl space-y-4 text-center">
       <div class="flex items-center justify-center">
-        <img src="Gallerer.svg" alt="Gallerer" class="h-24" loading="eager" />
-        <h1 class="text-5xl font-bold text-black sm:text-6xl md:text-7xl">
-          Gallerer
-        </h1>
+        <img
+          src="Gallerer.svg"
+          alt="Gallerer"
+          class="h-24 dark:invert"
+          loading="eager"
+        />
+        <h1 class="text-5xl font-bold sm:text-6xl md:text-7xl">Gallerer</h1>
       </div>
-      <h1 class="text-2xl text-black sm:text-3xl md:text-4xl">
-        A simple image gallery
-      </h1>
+      <h1 class="text-2xl sm:text-3xl md:text-4xl">A simple image gallery</h1>
       <section
         id="links"
         class="mt-8 flex flex-col justify-center gap-4 sm:flex-row"
       >
         <a
-          href="/about"
-          class="inline-flex items-center justify-center rounded-md border border-transparent bg-indigo-600 px-6 py-3 text-base font-medium text-white hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2"
-          >About</a
+          href="#images"
+          class="inline-flex items-center justify-center rounded-md border border-transparent px-6 py-3 text-base font-medium text-neutral-900 dark:text-white bg-transparent backdrop-blur-[20px]"
+        >
+          🧭 Discover</a
         >
       </section>
     </section>

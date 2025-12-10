@@ -3,7 +3,7 @@ import { InView } from "../components/ui/in-view";
 export function Footer() {
   return (
     <InView>
-      <footer className="bg-gray-800 text-white p-6 md:p-8 text-center text-sm">
+      <footer className="relative z-50 bg-neutral-200 text-neutral-900 dark:text-neutral-200 dark:bg-neutral-900 p-6 md:p-8 text-center text-sm">
         <div className="container mx-auto flex flex-col md:flex-row justify-between items-center md:items-start gap-y-6 md:gap-y-0 md:gap-x-8">
           {/* Copyright and Developer Info */}
           <div className="flex flex-col items-center md:items-start gap-y-2">

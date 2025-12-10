@@ -3,38 +3,38 @@ import Layout from "../layouts/Layout.astro";
 import { Footer } from "../components/footer";
 ---
 
-<div class="flex flex-col h-full min-h-screen">
-  <Layout title="Terms of Service" client:load>
-    <main class="container mx-auto px-4 py-8 max-w-3xl h-full min-h-screen">
-      <h1 class="text-2xl font-extrabold text-center mb-10 text-neutral-900">
+<Layout title="Privacy Policy" client:load>
+  <div class="flex flex-col min-h-screen text-neutral-900 dark:text-white p-12">
+    <main class="container mx-auto px-6 py-12 max-w-3xl">
+      <h1 class="text-2xl font-extrabold text-center mb-10">
         Terms of Service
       </h1>
 
-      <p class="mb-4 text-lg leading-relaxed text-neutral-700">
+      <p class="mb-4 text-lg leading-relaxed">
         By accessing and using Gallerer, you agree to comply with these Terms of
         Service.
       </p>
 
-      <p class="mb-4 text-lg leading-relaxed text-neutral-700">
+      <p class="mb-4 text-lg leading-relaxed">
         Gallerer is a simple image gallery built with Astro. It does not collect
         any personal information from its users.
       </p>
 
-      <p class="mb-4 text-lg leading-relaxed text-neutral-700">
+      <p class="mb-4 text-lg leading-relaxed">
         Gallerer does not use cookies or other tracking technologies.
       </p>
 
-      <p class="mb-4 text-lg leading-relaxed text-neutral-700">
+      <p class="mb-4 text-lg leading-relaxed">
         Gallerer does not sell or share any personal information with third
         parties.
       </p>
 
-      <p class="mb-4 text-lg leading-relaxed text-neutral-700">
+      <p class="mb-4 text-lg leading-relaxed">
         Gallerer is committed to protecting the privacy of its users and
         complying with relevant data protection regulations.
       </p>
 
-      <p class="mb-4 text-lg leading-relaxed text-neutral-700">
+      <p class="mb-4 text-lg leading-relaxed">
         If you have any questions or concerns about this Terms of Service,
         please contact us at <a
           href="mailto:jorgemarcos.andsof@gmail.com"
@@ -43,11 +43,11 @@ import { Footer } from "../components/footer";
         >.
       </p>
 
-      <p class="text-sm text-neutral-500 mt-8">
+      <p class="text-sm mt-8 text-neutral-700 dark:text-neutral-400">
         Last updated: December 9, 2025
       </p>
     </main>
-  </Layout>
+  </div>
 
   <Footer client:load />
-</div>
+</Layout>

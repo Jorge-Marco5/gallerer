@@ -2,7 +2,6 @@
 import "../styles/global.css";
 ---
 
-<!doctype html>
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
@@ -13,8 +12,38 @@ import "../styles/global.css";
     <meta name="description" content="A simple image gallery" />
     <meta name="keywords" content="image gallery, astro, cosmos.so" />
     <meta name="author" content="Jorge Marcos" />
+
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Geist:wght@100..900&display=swap"
+      rel="stylesheet"
+    />
   </head>
-  <body class="m-0 w-full h-full overflow-x-hidden">
+
+  <body
+    class="m-0 w-full h-full overflow-x-hidden bg-neutral-50 text-neutral-900 dark:bg-neutral-950 dark:text-white"
+  >
+    <script is:inline>
+      const theme = (() => {
+        if (
+          typeof localStorage !== "undefined" &&
+          localStorage.getItem("theme")
+        ) {
+          return localStorage.getItem("theme");
+        }
+        if (window.matchMedia("(prefers-color-scheme: dark)").matches) {
+          return "dark";
+        }
+        return "light";
+      })();
+      if (theme === "dark") {
+        document.documentElement.classList.add("dark");
+      } else {
+        document.documentElement.classList.remove("dark");
+      }
+      window.localStorage.setItem("theme", theme);
+    </script>
     <slot />
   </body>
 </html>

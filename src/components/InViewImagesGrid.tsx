@@ -4,13 +4,16 @@ import { motion } from "framer-motion";
 
 export function InViewImagesGrid() {
   return (
-    <div className="h-full w-full overflow-auto">
+    <div
+      id="images"
+      className="h-full w-full overflow-auto relative bg-white dark:bg-neutral-950"
+    >
       <div className="mb-20 text-center text-sm flex flex-col items-center">
         Scroll down
         <img
           src="/scroll-down.svg"
           alt="Scroll down"
-          className="mt-2 inline h-6 animate-bounce"
+          className="mt-2 inline h-6 animate-bounce dark:invert"
         />
       </div>
       <div className="flex h-full items-end justify-center pb-12">
@@ -82,11 +85,17 @@ export function InViewImagesGrid() {
                   key={index}
                   className="mb-4"
                 >
-                  <img
-                    src={imgSrc}
-                    alt={`Image placeholder from cosmos.so, index:${index}`}
-                    className="size-full rounded-lg object-contain"
-                  />
+                  <picture>
+                    <img
+                      src={imgSrc}
+                      alt={`Image placeholder from cosmos.so, index:${index}`}
+                      className="size-full rounded-lg object-contain"
+                      loading="lazy"
+                      width={100}
+                      height={100}
+                      sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
+                    />
+                  </picture>
                 </motion.div>
               );
             })}
