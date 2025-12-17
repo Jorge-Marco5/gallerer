@@ -1,4 +1,4 @@
-name: Deploy Astro a Nginx (Windows)
+name: Deploy Astro a Nginx (Linux)
 
 on:
   push:
@@ -28,12 +28,6 @@ jobs:
         uses: webfactory/ssh-agent@v0.9.0
         with:
           ssh-private-key: ${{ secrets.SSH_KEY }}
-
-      # Paso de Seguridad: Crear carpeta y limpiar antes de copiar
-      # Esto confirma que la conexión SSH funciona y la carpeta existe
-      - name: Prep Windows Folder
-        run: |
-          ssh -p ${{ secrets.SSH_PORT }} -o StrictHostKeyChecking=no ${{ secrets.SSH_USER }}@${{ secrets.SSH_HOST }} "powershell -command New-Item -ItemType Directory -Force -Path 'C:\nginx\html'"
 
       # Copiar archivos
       # CORRECCIÓN: Usamos 'C:/nginx/html' (Sin barra al inicio, comillas simples)
