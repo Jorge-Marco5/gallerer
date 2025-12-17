@@ -37,7 +37,7 @@ jobs:
 
       # Copiar archivos
       # CORRECCIÓN: Usamos 'C:/nginx/html' (Sin barra al inicio, comillas simples)
-      - name: Deploy to Windows Nginx
+      - name: Deploy via SCP
         run: |
-          # Ruta exacta para Windows via OpenSSH: 'C:/nginx/html'
-          scp -P ${{ secrets.SSH_PORT }} -o StrictHostKeyChecking=no -r dist/* ${{ secrets.SSH_USER }}@${{ secrets.SSH_HOST }}:'C:/nginx/html'
+          # Ruta estándar de Linux: /var/www/html
+          scp -P ${{ secrets.SSH_PORT }} -o StrictHostKeyChecking=no -r dist/* ${{ secrets.SSH_USER }}@${{ secrets.SSH_HOST }}:/var/www/html
